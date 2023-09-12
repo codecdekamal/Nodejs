@@ -1,5 +1,5 @@
 const express = require("express");
-const {products} = require("./Day2/data")
+const {products} = require("../Day2/data")
 const newProducts = products.map((element)=>{
     const {id,name,image} = element;
     return {id,name,image}
@@ -25,9 +25,10 @@ app.get("/api/products/:id",(req,res)=>{
     //         break;
     // }
     // used destructring
-        const {id} = req.params;
+        const {id} = req.params; // since id has type string
         console.log(id)
-     const singleProducts =   products.find((element)=>element.id === Number(id))
+        console.log(req.params)
+     const singleProducts = products.find((element)=>element.id === Number(id))
      if(singleProducts) res.json(singleProducts);
      else res.status(404).send("<h2>Product is not available</h2>")
   })

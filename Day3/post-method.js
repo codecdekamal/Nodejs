@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
-
+// { extended: false }: This is an option passed to express.urlencoded(). When extended is set to false, the values in the parsed data are strings or arrays, and it does not allow for nested objects in the data. If you set it to true, it allows for more complex data structures with nested objects.
 app.use(express.urlencoded({extended:false}))
+//  express.static(root, [options])
 app.use(express.static("./Day3/methods-public"))
 app.get("/",(req,res)=>{
   res.send("this is home page")
